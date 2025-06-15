@@ -67,13 +67,15 @@
       window.onpopstate = function () {
         if (!disetujui) {
           blockModal.classList.remove("hidden");
-          blockBackButton();
+          history.pushState(null, null, location.href); // Re-push to prevent exiting
         }
       };
     }
 
     function unblockBackButton() {
-      window.onpopstate = null;
+      window.onpopstate = function () {
+        history.back();
+      };
     }
 
     blockBackButton();
@@ -87,11 +89,7 @@
           btnAgree.innerText = "Saya Setuju";
         }
       } else {
-        if (disetujui) {
-          disetujui = false;
-          unblockBackButton();
-        }
-
+        disetujui = false;
         btnAgree.disabled = true;
         btnAgree.classList.remove("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer", "bg-green-600", "hover:bg-gray-700", "bg-green-700");
         btnAgree.classList.add("bg-gray-400", "cursor-not-allowed");
@@ -130,10 +128,14 @@
     }
 
     btnBack.addEventListener("click", () => {
-      if (typeof AndroidInterface !== 'undefined' && AndroidInterface.closeWebView) {
-        AndroidInterface.closeWebView();
+      if (disetujui) {
+        if (typeof AndroidInterface !== 'undefined' && AndroidInterface.closeWebView) {
+          AndroidInterface.closeWebView();
+        } else {
+          window.close();
+        }
       } else {
-        window.close();
+        blockModal.classList.remove("hidden");
       }
     });
   </script>
