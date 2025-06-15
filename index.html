@@ -62,33 +62,26 @@
 
     let disetujui = false;
 
-    function blockBackButton() {
-      history.pushState({ page: 1 }, "", "");
-    }
-
-    function showWarningModalIfNeeded() {
-      if (!checkbox.checked && !disetujui) {
-        blockModal.classList.remove("hidden");
-        blockBackButton();
-      }
+    function showBlockModal() {
+      blockModal.classList.remove("hidden");
     }
 
     window.onload = () => {
-      blockBackButton();
-    }
-
-    window.onpopstate = (e) => {
-      showWarningModalIfNeeded();
+      history.pushState(null, document.title, location.href);
+      window.addEventListener("popstate", function (event) {
+        if (!checkbox.checked) {
+          history.pushState(null, document.title, location.href); // dorong kembali
+          showBlockModal();
+        }
+      });
     };
 
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
-        if (!disetujui) {
-          btnAgree.disabled = false;
-          btnAgree.classList.remove("bg-gray-400", "cursor-not-allowed");
-          btnAgree.classList.add("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer");
-          btnAgree.innerText = "Saya Setuju";
-        }
+        btnAgree.disabled = false;
+        btnAgree.classList.remove("bg-gray-400", "cursor-not-allowed");
+        btnAgree.classList.add("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer");
+        btnAgree.innerText = "Saya Setuju";
       } else {
         disetujui = false;
         btnAgree.disabled = true;
@@ -99,12 +92,14 @@
         btnBack.disabled = true;
         btnBack.classList.remove("bg-green-600", "hover:bg-green-700", "cursor-pointer");
         btnBack.classList.add("bg-gray-300", "cursor-not-allowed");
-
-        blockBackButton();
       }
     });
 
     btnAgree.addEventListener("click", () => {
+      if (!checkbox.checked) {
+        showBlockModal();
+        return;
+      }
       disetujui = true;
       btnAgree.innerText = "✔️ Disetujui";
       btnAgree.disabled = true;
@@ -127,14 +122,14 @@
     }
 
     btnBack.addEventListener("click", () => {
-      if (disetujui) {
-        if (typeof AndroidInterface !== 'undefined' && AndroidInterface.closeWebView) {
-          AndroidInterface.closeWebView();
-        } else {
-          window.close();
-        }
+      if (!disetujui) {
+        showBlockModal();
+        return;
+      }
+      if (typeof AndroidInterface !== 'undefined' && AndroidInterface.closeWebView) {
+        AndroidInterface.closeWebView();
       } else {
-        showWarningModalIfNeeded();
+        window.close();
       }
     });
   </script>
