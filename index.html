@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Syarat & Ketentuan Login - Galeri Pulsa</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #6366f1, #8b5cf6);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-4">
 
-  <div class="bg-white shadow-lg rounded-xl p-8 max-w-2xl w-full">
-    <h1 class="text-2xl font-bold text-indigo-700 mb-4 text-center">Syarat & Ketentuan Login</h1>
+  <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-2xl w-full relative">
+    <h1 class="text-2xl font-bold text-center text-indigo-700 mb-6">Syarat & Ketentuan Login</h1>
 
-    <div class="text-sm text-gray-800 space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+    <div class="text-sm text-gray-800 space-y-4 max-h-[60vh] overflow-y-auto pr-2 border border-gray-200 rounded p-4 bg-gray-50">
       <p><strong>1. Akun dan Informasi Pribadi</strong><br>
       Anda bertanggung jawab atas keamanan akun Anda, termasuk email, nomor HP, dan kata sandi. Jangan bagikan informasi login Anda kepada siapa pun. Semua data yang Anda masukkan harus benar dan dapat dipertanggungjawabkan.</p>
 
@@ -32,11 +37,42 @@
       📧 support@galeripulsa.com</p>
     </div>
 
+    <!-- Checkbox -->
     <div class="flex items-center mt-6">
-      <input type="checkbox" id="agree" class="mr-2" />
+      <input type="checkbox" id="agree" class="mr-2 h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" />
       <label for="agree" class="text-sm text-gray-700">Saya telah membaca dan menyetujui Syarat & Ketentuan di atas</label>
     </div>
+
+    <!-- Button -->
+    <button id="btnAgree"
+      class="mt-4 w-full py-2 px-4 bg-gray-400 text-white rounded-lg font-semibold cursor-not-allowed transition duration-200"
+      disabled>
+      Saya Setuju
+    </button>
   </div>
+
+  <script>
+    const checkbox = document.getElementById("agree");
+    const btn = document.getElementById("btnAgree");
+
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        btn.disabled = false;
+        btn.classList.remove("bg-gray-400", "cursor-not-allowed");
+        btn.classList.add("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer");
+      } else {
+        btn.disabled = true;
+        btn.classList.add("bg-gray-400", "cursor-not-allowed");
+        btn.classList.remove("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer");
+      }
+    });
+
+    btn.addEventListener("click", () => {
+      alert("Terima kasih, Anda akan diarahkan ke aplikasi...");
+      // Ganti dengan URL aplikasi asli jika sudah ada
+      window.location.href = "galeripulsa://open"; 
+    });
+  </script>
 
 </body>
 </html>
