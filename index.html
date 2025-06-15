@@ -63,26 +63,23 @@
     let disetujui = false;
 
     function blockBackButton() {
-      history.pushState(null, null, location.href);
+      history.pushState({ page: 1 }, "", "");
     }
 
-    function unblockBackButton() {
-      window.onpopstate = function () {
-        history.back();
-      };
-    }
-
-    window.addEventListener("popstate", function (event) {
-      if (!disetujui) {
+    function showWarningModalIfNeeded() {
+      if (!checkbox.checked && !disetujui) {
         blockModal.classList.remove("hidden");
-        history.pushState(null, null, location.href);
+        blockBackButton();
       }
-    });
+    }
 
-    window.addEventListener("load", function () {
-      // Memastikan halaman tidak bisa langsung ditutup dengan back saat pertama kali dibuka
+    window.onload = () => {
       blockBackButton();
-    });
+    }
+
+    window.onpopstate = (e) => {
+      showWarningModalIfNeeded();
+    };
 
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
@@ -118,7 +115,6 @@
       btnBack.classList.remove("bg-gray-300", "cursor-not-allowed");
       btnBack.classList.add("bg-green-600", "hover:bg-green-700", "cursor-pointer");
 
-      unblockBackButton();
       modal.classList.remove("hidden");
     });
 
@@ -138,8 +134,7 @@
           window.close();
         }
       } else {
-        blockModal.classList.remove("hidden");
-        history.pushState(null, null, location.href);
+        showWarningModalIfNeeded();
       }
     });
   </script>
