@@ -2,65 +2,72 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Syarat & Kebijakan Privasi | Galeri Pulsa</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    h1, h2 {
-      color: #0057b8;
-    }
-    ul {
-      margin-left: 1.5rem;
-    }
-    footer {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Galeri Pulsa</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="container">
-    <h1>Syarat & Ketentuan Login</h1>
-    <p>Dengan menggunakan fitur login di aplikasi <strong>Galeri Pulsa</strong>, Anda dianggap telah menyetujui syarat dan ketentuan berikut:</p>
-    <ul>
-      <li><strong>Data yang Benar:</strong> Anda wajib memasukkan informasi login yang valid, seperti nomor HP dan PIN.</li>
-      <li><strong>Privasi Akun:</strong> Anda bertanggung jawab menjaga kerahasiaan akun Anda sendiri. Jangan bagikan PIN Anda kepada orang lain.</li>
-      <li><strong>Penyalahgunaan:</strong> Jika ditemukan aktivitas mencurigakan, kami berhak menonaktifkan akun untuk keamanan.</li>
-      <li><strong>Penggunaan Wajar:</strong> Login hanya diperbolehkan bagi pengguna resmi dan terdaftar di Galeri Pulsa.</li>
-      <li><strong>Perubahan Layanan:</strong> Kami dapat memperbarui atau menghentikan fitur login kapan saja tanpa pemberitahuan sebelumnya.</li>
-    </ul>
+<body class="bg-gray-100 font-sans">
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-md w-full max-w-lg p-6">
+      <h2 class="text-2xl font-bold text-center text-indigo-700 mb-6">Login Galeri Pulsa</h2>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Nomor HP</label>
+          <input type="tel" placeholder="08xxxxxxxxxx" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">PIN / Kata Sandi</label>
+          <input type="password" placeholder="******" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required />
+        </div>
+        <div class="flex items-start">
+          <input type="checkbox" id="agree" class="mt-1 mr-2" required />
+          <label for="agree" class="text-sm text-gray-700">
+            Saya telah membaca dan menyetujui <button type="button" onclick="toggleTerms()" class="text-blue-600 underline">Syarat & Ketentuan</button>
+          </label>
+        </div>
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md transition duration-200">
+          Login
+        </button>
+      </form>
 
-    <h2>Kebijakan Privasi Login</h2>
-    <p>Kami sangat menghargai dan melindungi privasi Anda. Berikut ini kebijakan privasi terkait fitur login:</p>
-    <ul>
-      <li><strong>Data yang Dikumpulkan:</strong> Nomor HP, PIN terenkripsi, waktu login, dan perangkat digunakan.</li>
-      <li><strong>Penggunaan Data:</strong> Untuk autentikasi, keamanan, dan personalisasi layanan Galeri Pulsa.</li>
-      <li><strong>Keamanan:</strong> Kami menggunakan sistem enkripsi dan keamanan standar untuk menjaga informasi Anda.</li>
-      <li><strong>Hak Pengguna:</strong> Anda dapat meminta penghapusan atau perubahan data akun dengan menghubungi layanan pelanggan resmi kami.</li>
-      <li><strong>Perubahan Kebijakan:</strong> Kebijakan ini dapat diperbarui sewaktu-waktu dengan atau tanpa pemberitahuan sebelumnya.</li>
-    </ul>
+      <!-- Syarat dan Ketentuan (Tersembunyi awalnya) -->
+      <div id="termsBox" class="mt-6 hidden bg-gray-50 border border-gray-300 rounded-lg p-4 overflow-y-auto max-h-96 text-sm text-gray-700">
+        <h3 class="text-lg font-semibold mb-2">Syarat & Ketentuan Login</h3>
+        <p>Dengan melanjutkan proses login ke aplikasi Galeri Pulsa, Anda setuju untuk mematuhi ketentuan berikut:</p><br>
 
-    <p><strong>Dengan login ke Aplikasi Galeri Pulsa, berarti Anda telah membaca dan menyetujui seluruh isi halaman ini.</strong></p>
+        <strong>1. Akun dan Informasi Pribadi</strong><br>
+        - Anda bertanggung jawab atas keamanan akun Anda, termasuk email, nomor HP, dan kata sandi.<br>
+        - Jangan bagikan informasi login Anda kepada siapa pun.<br>
+        - Semua data yang Anda masukkan harus benar dan dapat dipertanggungjawabkan.<br><br>
 
-    <footer>
-      &copy; 2025 Galeri Pulsa. Seluruh hak cipta dilindungi.
-    </footer>
+        <strong>2. Penggunaan Aplikasi</strong><br>
+        - Aplikasi hanya boleh digunakan untuk keperluan sah seperti pembelian pulsa dan layanan digital lainnya.<br>
+        - Dilarang menggunakan aplikasi untuk tindakan penipuan atau manipulasi sistem.<br><br>
+
+        <strong>3. Privasi dan Data Pengguna</strong><br>
+        - Kami menjaga data pribadi Anda dengan standar keamanan yang baik.<br>
+        - Data digunakan hanya untuk kebutuhan operasional dan peningkatan layanan.<br><br>
+
+        <strong>4. Penonaktifan Akun</strong><br>
+        - Kami berhak menonaktifkan akun jika ditemukan pelanggaran ketentuan tanpa pemberitahuan terlebih dahulu.<br>
+        - Jika akun dibekukan secara tidak adil, silakan hubungi layanan pelanggan.<br><br>
+
+        <strong>5. Perubahan Kebijakan</strong><br>
+        - Syarat & ketentuan dapat diperbarui sewaktu-waktu.<br>
+        - Dengan terus menggunakan aplikasi, Anda dianggap menyetujui pembaruan tersebut.<br><br>
+
+        <strong>6. Bantuan dan Layanan Pelanggan</strong><br>
+        📞 0852-4004-6789<br>
+        📧 support@galeripulsa.com
+      </div>
+    </div>
   </div>
+
+  <script>
+    function toggleTerms() {
+      const box = document.getElementById('termsBox');
+      box.classList.toggle('hidden');
+    }
+  </script>
 </body>
 </html>
