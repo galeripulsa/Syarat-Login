@@ -13,25 +13,20 @@
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-  <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-2xl w-full relative">
+  <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-2xl w-full">
     <h1 class="text-2xl font-bold text-center text-indigo-700 mb-6">Syarat & Ketentuan Login</h1>
 
     <div class="text-sm text-gray-800 space-y-4 max-h-[60vh] overflow-y-auto pr-2 border border-gray-200 rounded p-4 bg-gray-50">
       <p><strong>1. Akun dan Informasi Pribadi</strong><br>
-      Anda bertanggung jawab atas keamanan akun Anda, termasuk email, nomor HP, dan kata sandi. Jangan bagikan informasi login Anda kepada siapa pun. Semua data yang Anda masukkan harus benar dan dapat dipertanggungjawabkan.</p>
-
+      Anda bertanggung jawab atas keamanan akun Anda...</p>
       <p><strong>2. Penggunaan Aplikasi</strong><br>
-      Aplikasi hanya boleh digunakan untuk keperluan sah seperti pembelian pulsa dan layanan digital lainnya. Dilarang menggunakan aplikasi untuk tindakan penipuan atau manipulasi sistem.</p>
-
+      Aplikasi hanya boleh digunakan untuk keperluan sah...</p>
       <p><strong>3. Privasi dan Data Pengguna</strong><br>
-      Kami menjaga data pribadi Anda dengan standar keamanan yang baik. Data digunakan hanya untuk kebutuhan operasional dan peningkatan layanan.</p>
-
+      Kami menjaga data pribadi Anda...</p>
       <p><strong>4. Penonaktifan Akun</strong><br>
-      Kami berhak menonaktifkan akun jika ditemukan pelanggaran ketentuan tanpa pemberitahuan terlebih dahulu. Jika akun dibekukan secara tidak adil, silakan hubungi layanan pelanggan.</p>
-
+      Kami berhak menonaktifkan akun jika ditemukan pelanggaran...</p>
       <p><strong>5. Perubahan Kebijakan</strong><br>
-      Syarat & ketentuan dapat diperbarui sewaktu-waktu. Dengan terus menggunakan aplikasi, Anda dianggap menyetujui pembaruan tersebut.</p>
-
+      Syarat & ketentuan dapat diperbarui sewaktu-waktu...</p>
       <p><strong>6. Bantuan dan Layanan Pelanggan</strong><br>
       📞 0852-4004-6789<br>
       📧 support@galeripulsa.com</p>
@@ -40,7 +35,7 @@
     <!-- Checkbox -->
     <div class="flex items-center mt-6">
       <input type="checkbox" id="agree" class="mr-2 h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" />
-      <label for="agree" class="text-sm text-gray-700">Saya telah membaca dan menyetujui Syarat & Ketentuan di atas</label>
+      <label for="agree" class="text-sm text-gray-700">Saya telah membaca dan menyetujui</label>
     </div>
 
     <!-- Tombol Setuju -->
@@ -65,7 +60,7 @@
 
     let disetujui = false;
 
-    // Cegah tombol kembali sebelum setuju
+    // Cegah tombol back HP sebelum setuju
     history.pushState(null, null, location.href);
     window.addEventListener('popstate', function () {
       if (!disetujui) {
@@ -74,7 +69,51 @@
       }
     });
 
+    // Checkbox berubah
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
+        // Aktifkan tombol Setuju
         btnAgree.disabled = false;
-        btnAgree.
+        btnAgree.classList.remove("bg-gray-400", "cursor-not-allowed");
+        btnAgree.classList.add("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer");
+
+        // Jika sebelumnya sudah setuju lalu checkbox dicabut, reset
+        if (!disetujui) {
+          btnAgree.innerText = "Saya Setuju";
+        }
+      } else {
+        // Nonaktifkan tombol
+        btnAgree.disabled = true;
+        btnAgree.classList.remove("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer");
+        btnAgree.classList.add("bg-gray-400", "cursor-not-allowed");
+
+        // Reset status
+        disetujui = false;
+        btnAgree.innerText = "Saya Setuju";
+        btnBack.disabled = true;
+        btnBack.classList.remove("bg-green-600", "hover:bg-green-700", "cursor-pointer");
+        btnBack.classList.add("bg-gray-300", "cursor-not-allowed");
+      }
+    });
+
+    btnAgree.addEventListener("click", () => {
+      disetujui = true;
+      btnAgree.innerText = "✔️ Disetujui";
+      btnAgree.classList.remove("bg-indigo-600", "hover:bg-indigo-700");
+      btnAgree.classList.add("bg-green-600", "hover:bg-green-700");
+
+      btnBack.disabled = false;
+      btnBack.classList.remove("bg-gray-300", "cursor-not-allowed");
+      btnBack.classList.add("bg-green-600", "hover:bg-green-700", "cursor-pointer");
+
+      alert("Terima kasih! Anda sekarang bisa kembali ke aplikasi.");
+    });
+
+    btnBack.addEventListener("click", () => {
+      // Arahkan kembali ke aplikasi — ubah sesuai deep link Anda
+      window.location.href = "galeripulsa://open";
+    });
+  </script>
+
+</body>
+</html>
