@@ -43,57 +43,38 @@
       <label for="agree" class="text-sm text-gray-700">Saya telah membaca dan menyetujui Syarat & Ketentuan di atas</label>
     </div>
 
-    <!-- Tombol -->
+    <!-- Tombol Setuju -->
     <button id="btnAgree"
       class="mt-4 w-full py-2 px-4 bg-gray-400 text-white rounded-lg font-semibold cursor-not-allowed transition duration-200"
       disabled>
       Saya Setuju
     </button>
+
+    <!-- Tombol Kembali -->
+    <button id="btnBack"
+      class="mt-3 w-full py-2 px-4 bg-gray-300 text-white rounded-lg font-semibold cursor-not-allowed transition duration-200"
+      disabled>
+      🔙 Kembali ke Aplikasi
+    </button>
   </div>
 
   <script>
     const checkbox = document.getElementById("agree");
-    const btn = document.getElementById("btnAgree");
+    const btnAgree = document.getElementById("btnAgree");
+    const btnBack = document.getElementById("btnBack");
 
     let disetujui = false;
 
-    // Matikan tombol kembali sebelum setuju
+    // Cegah tombol kembali sebelum setuju
     history.pushState(null, null, location.href);
-    window.addEventListener('popstate', function (event) {
+    window.addEventListener('popstate', function () {
       if (!disetujui) {
-        history.pushState(null, null, location.href);
         alert("Silakan setujui syarat & ketentuan terlebih dahulu.");
+        history.pushState(null, null, location.href);
       }
     });
 
-    // Aktifkan tombol jika dicentang
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
-        btn.disabled = false;
-        btn.classList.remove("bg-gray-400", "cursor-not-allowed");
-        btn.classList.add("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer");
-      } else {
-        btn.disabled = true;
-        btn.classList.add("bg-gray-400", "cursor-not-allowed");
-        btn.classList.remove("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer");
-      }
-    });
-
-    // Setelah klik setuju
-    btn.addEventListener("click", () => {
-      disetujui = true;
-      btn.innerText = "✔️ Disetujui";
-      btn.classList.remove("bg-indigo-600", "hover:bg-indigo-700");
-      btn.classList.add("bg-green-600", "hover:bg-green-700");
-
-      alert("Terima kasih! Anda sekarang bisa kembali ke aplikasi.");
-
-      // Tambahkan ke history agar tombol kembali bisa berfungsi lagi
-      setTimeout(() => {
-        history.pushState(null, null, location.href);
-      }, 500);
-    });
-  </script>
-
-</body>
-</html>
+        btnAgree.disabled = false;
+        btnAgree.
