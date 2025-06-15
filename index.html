@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Syarat & Ketentuan Login - Galeri Pulsa</title>
+  <title>Syarat & Ketentuan Login</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     body {
@@ -18,29 +18,29 @@
 
     <div class="text-sm text-gray-800 space-y-4 max-h-[60vh] overflow-y-auto pr-2 border border-gray-200 rounded p-4 bg-gray-50">
       <p><strong>1. Akun dan Informasi Pribadi</strong><br>
-      Anda bertanggung jawab atas keamanan akun Anda, termasuk email, nomor HP, dan kata sandi.</p>
+      Anda bertanggung jawab atas keamanan akun Anda, termasuk email, nomor HP, dan kata sandi. Jangan bagikan informasi login Anda kepada siapa pun. Semua data yang Anda masukkan harus benar dan dapat dipertanggungjawabkan.</p>
 
       <p><strong>2. Penggunaan Aplikasi</strong><br>
-      Aplikasi hanya untuk pembelian pulsa dan layanan sah lainnya. Dilarang melakukan penipuan atau manipulasi sistem.</p>
+      Aplikasi hanya boleh digunakan untuk keperluan sah seperti pembelian pulsa dan layanan digital lainnya. Dilarang menggunakan aplikasi untuk tindakan penipuan atau manipulasi sistem.</p>
 
       <p><strong>3. Privasi dan Data Pengguna</strong><br>
-      Kami menjaga data pribadi Anda dengan standar keamanan terbaik untuk keperluan layanan.</p>
+      Kami menjaga data pribadi Anda dengan standar keamanan yang baik. Data digunakan hanya untuk kebutuhan operasional dan peningkatan layanan.</p>
 
       <p><strong>4. Penonaktifan Akun</strong><br>
-      Akun bisa dinonaktifkan tanpa pemberitahuan jika melanggar ketentuan.</p>
+      Kami berhak menonaktifkan akun jika ditemukan pelanggaran ketentuan tanpa pemberitahuan terlebih dahulu. Jika akun dibekukan secara tidak adil, silakan hubungi layanan pelanggan.</p>
 
       <p><strong>5. Perubahan Kebijakan</strong><br>
-      Kami dapat memperbarui ketentuan sewaktu-waktu.</p>
+      Syarat & ketentuan dapat diperbarui sewaktu-waktu. Dengan terus menggunakan aplikasi, Anda dianggap menyetujui pembaruan tersebut.</p>
 
-      <p><strong>6. Bantuan</strong><br>
+      <p><strong>6. Bantuan dan Layanan Pelanggan</strong><br>
       📞 0852-4004-6789<br>
       📧 support@galeripulsa.com</p>
     </div>
 
-    <!-- Persetujuan -->
+    <!-- Checkbox -->
     <div class="flex items-center mt-6">
       <input type="checkbox" id="agree" class="mr-2 h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" />
-      <label for="agree" class="text-sm text-gray-700">Saya telah membaca dan menyetujui Syarat & Ketentuan</label>
+      <label for="agree" class="text-sm text-gray-700">Saya telah membaca dan menyetujui Syarat & Ketentuan di atas</label>
     </div>
 
     <!-- Tombol -->
@@ -52,19 +52,21 @@
   </div>
 
   <script>
-    let agreed = false;
     const checkbox = document.getElementById("agree");
     const btn = document.getElementById("btnAgree");
 
-    // Disable tombol kembali sebelum setuju
-    window.history.pushState(null, "", window.location.href);
-    window.addEventListener("popstate", function (event) {
-      if (!agreed) {
-        window.history.pushState(null, "", window.location.href);
-        alert("Anda harus menyetujui Syarat & Ketentuan terlebih dahulu.");
+    let disetujui = false;
+
+    // Matikan tombol kembali sebelum setuju
+    history.pushState(null, null, location.href);
+    window.addEventListener('popstate', function (event) {
+      if (!disetujui) {
+        history.pushState(null, null, location.href);
+        alert("Silakan setujui syarat & ketentuan terlebih dahulu.");
       }
     });
 
+    // Aktifkan tombol jika dicentang
     checkbox.addEventListener("change", () => {
       if (checkbox.checked) {
         btn.disabled = false;
@@ -77,14 +79,21 @@
       }
     });
 
+    // Setelah klik setuju
     btn.addEventListener("click", () => {
-      agreed = true;
-      btn.innerText = "✅ Disetujui";
+      disetujui = true;
+      btn.innerText = "✔️ Disetujui";
       btn.classList.remove("bg-indigo-600", "hover:bg-indigo-700");
-      btn.classList.add("bg-green-600");
-      btn.disabled = true;
-      // Beri notifikasi & aktifkan kembali tombol kembali
+      btn.classList.add("bg-green-600", "hover:bg-green-700");
+
+      alert("Terima kasih! Anda sekarang bisa kembali ke aplikasi.");
+
+      // Tambahkan ke history agar tombol kembali bisa berfungsi lagi
       setTimeout(() => {
-        alert("Terima kasih, Anda akan diarahkan kembali ke aplikasi.");
-        // Ganti URL di bawah ini sesuai deep link atau halaman berikutnya
-        window.loc
+        history.pushState(null, null, location.href);
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
