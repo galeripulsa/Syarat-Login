@@ -2,7 +2,7 @@
 <html lang="id">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-15" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Syarat & Ketentuan Login - Aplikasi Galeri Pulsa</title>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,8 +11,8 @@
 <body class="bg-gradient-to-b from-cyan-800 to-purple-900 min-h-screen flex flex-col justify-center items-center px-4 text-white">
   <div class="bg-white text-black rounded-3xl shadow-lg p-6 max-w-xl w-full">
     <h2 class="text-2xl font-bold text-center mb-4">Syarat & Ketentuan Login<br><span class="text-base font-medium">Aplikasi Galeri Pulsa</span></h2>
-    <div class="bg-gray-100 text-sm p-4 rounded overflow-y-auto h-64">
-      <ol class="list-decimal pl-4 space-y-2">
+    <div class="bg-gray-100 text-base p-5 rounded overflow-y-auto h-72">
+      <ol class="list-decimal pl-4 space-y-3">
         <li><strong>Akun dan Informasi Pribadi</strong><br>Anda bertanggung jawab atas keamanan akun Anda, termasuk email, nomor HP, dan kata sandi. Jangan bagikan informasi login Anda kepada siapa pun. Semua data yang Anda masukkan harus benar dan dapat dipertanggungjawabkan.</li>
         <li><strong>Penggunaan Aplikasi</strong><br>Aplikasi hanya boleh digunakan untuk keperluan sah seperti pembelian pulsa dan layanan digital lainnya. Dilarang menggunakan aplikasi untuk tindakan penipuan atau manipulasi sistem.</li>
         <li><strong>Privasi dan Data Pengguna</strong><br>Kami menjaga data pribadi Anda dengan standar keamanan yang baik. Data digunakan hanya untuk kebutuhan operasional dan peningkatan layanan.</li>
@@ -85,7 +85,7 @@
         }
       } else {
         btnAgree.disabled = true;
-        btnAgree.classList.remove("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer", "bg-green-600", "hover:bg-green-700");
+        btnAgree.classList.remove("bg-indigo-600", "hover:bg-indigo-700", "cursor-pointer", "bg-green-600", "hover:bg-green-700", "bg-green-700");
         btnAgree.classList.add("bg-gray-400", "cursor-not-allowed");
         btnAgree.innerText = "Saya Setuju";
 
@@ -101,9 +101,9 @@
     btnAgree.addEventListener("click", () => {
       disetujui = true;
       btnAgree.innerText = "✔️ Disetujui";
-      btnAgree.disabled = true;
+      btnAgree.disabled = false;
       btnAgree.classList.remove("bg-indigo-600", "hover:bg-indigo-700");
-      btnAgree.classList.add("bg-green-700", "cursor-not-allowed");
+      btnAgree.classList.add("bg-green-700", "hover:bg-green-800", "cursor-pointer");
 
       btnBack.disabled = false;
       btnBack.classList.remove("bg-gray-300", "cursor-not-allowed");
@@ -129,4 +129,3 @@
 </body>
 
 </html>
-
