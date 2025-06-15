@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Popup Syarat & Privasi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Popup container */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    /* Modal content box */
+    .modal-content {
+      background-color: #fff;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.25);
+      position: relative;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    /* Close button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    h2 {
+      color: #0057b8;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .trigger-button {
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: #0057b8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .trigger-button:hover {
+      background-color: #003f91;
+    }
+  </style>
+</head>
+<body>
+
+<button class="trigger-button" onclick="openModal()">Baca Syarat & Privasi</button>
+
+<div id="popupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Syarat & Ketentuan Login</h2>
+    <ul>
+      <li><strong>Data yang Benar:</strong> Anda wajib memasukkan informasi login yang valid.</li>
+      <li><strong>Privasi Akun:</strong> Jaga kerahasiaan PIN dan data akun Anda.</li>
+      <li><strong>Penyalahgunaan:</strong> Akun bisa dibatasi jika terdeteksi aktivitas mencurigakan.</li>
+      <li><strong>Penggunaan Wajar:</strong> Login hanya untuk pengguna resmi.</li>
+      <li><strong>Perubahan Layanan:</strong> Fitur login dapat berubah tanpa pemberitahuan.</li>
+    </ul>
+
+    <h2>Kebijakan Privasi</h2>
+    <ul>
+      <li><strong>Data Dikumpulkan:</strong> Nomor HP, PIN (terenkripsi), waktu login, perangkat.</li>
+      <li><strong>Penggunaan Data:</strong> Autentikasi, keamanan, layanan personalisasi.</li>
+      <li><strong>Keamanan:</strong> Data dilindungi dengan sistem enkripsi dan firewall.</li>
+      <li><strong>Hak Pengguna:</strong> Dapat menghapus/meminta data melalui layanan pelanggan.</li>
+      <li><strong>Perubahan:</strong> Kebijakan bisa diperbarui sewaktu-waktu.</li>
+    </ul>
+    <p><strong>Dengan login, Anda menyetujui syarat dan kebijakan di atas.</strong></p>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    document.getElementById("popupModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("popupModal").style.display = "none";
+  }
+
+  // Close modal when clicking outside
+  window.onclick = function(event) {
+    const modal = document.getElementById("popupModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
