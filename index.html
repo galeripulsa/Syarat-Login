@@ -1,126 +1,66 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Popup Syarat & Privasi</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Syarat & Kebijakan Privasi | Galeri Pulsa</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
     }
-
-    /* Popup container */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      padding-top: 60px;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.4);
-    }
-
-    /* Modal content box */
-    .modal-content {
-      background-color: #fff;
+    .container {
+      max-width: 800px;
       margin: auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 700px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.25);
-      position: relative;
-      max-height: 80vh;
-      overflow-y: auto;
+      padding: 2rem;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-
-    /* Close button */
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 24px;
-      font-weight: bold;
-      position: absolute;
-      right: 20px;
-      top: 15px;
-      cursor: pointer;
-    }
-
-    .close:hover {
-      color: #000;
-    }
-
-    h2 {
+    h1, h2 {
       color: #0057b8;
     }
-
     ul {
-      margin-left: 20px;
+      margin-left: 1.5rem;
     }
-
-    .trigger-button {
-      margin: 20px;
-      padding: 10px 20px;
-      background-color: #0057b8;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .trigger-button:hover {
-      background-color: #003f91;
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
-
-<button class="trigger-button" onclick="openModal()">Baca Syarat & Privasi</button>
-
-<div id="popupModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>Syarat & Ketentuan Login</h2>
+  <div class="container">
+    <h1>Syarat & Ketentuan Login</h1>
+    <p>Dengan menggunakan fitur login di aplikasi <strong>Galeri Pulsa</strong>, Anda dianggap telah menyetujui syarat dan ketentuan berikut:</p>
     <ul>
-      <li><strong>Data yang Benar:</strong> Anda wajib memasukkan informasi login yang valid.</li>
-      <li><strong>Privasi Akun:</strong> Jaga kerahasiaan PIN dan data akun Anda.</li>
-      <li><strong>Penyalahgunaan:</strong> Akun bisa dibatasi jika terdeteksi aktivitas mencurigakan.</li>
-      <li><strong>Penggunaan Wajar:</strong> Login hanya untuk pengguna resmi.</li>
-      <li><strong>Perubahan Layanan:</strong> Fitur login dapat berubah tanpa pemberitahuan.</li>
+      <li><strong>Data yang Benar:</strong> Anda wajib memasukkan informasi login yang valid, seperti nomor HP dan PIN.</li>
+      <li><strong>Privasi Akun:</strong> Anda bertanggung jawab menjaga kerahasiaan akun Anda sendiri. Jangan bagikan PIN Anda kepada orang lain.</li>
+      <li><strong>Penyalahgunaan:</strong> Jika ditemukan aktivitas mencurigakan, kami berhak menonaktifkan akun untuk keamanan.</li>
+      <li><strong>Penggunaan Wajar:</strong> Login hanya diperbolehkan bagi pengguna resmi dan terdaftar di Galeri Pulsa.</li>
+      <li><strong>Perubahan Layanan:</strong> Kami dapat memperbarui atau menghentikan fitur login kapan saja tanpa pemberitahuan sebelumnya.</li>
     </ul>
 
-    <h2>Kebijakan Privasi</h2>
+    <h2>Kebijakan Privasi Login</h2>
+    <p>Kami sangat menghargai dan melindungi privasi Anda. Berikut ini kebijakan privasi terkait fitur login:</p>
     <ul>
-      <li><strong>Data Dikumpulkan:</strong> Nomor HP, PIN (terenkripsi), waktu login, perangkat.</li>
-      <li><strong>Penggunaan Data:</strong> Autentikasi, keamanan, layanan personalisasi.</li>
-      <li><strong>Keamanan:</strong> Data dilindungi dengan sistem enkripsi dan firewall.</li>
-      <li><strong>Hak Pengguna:</strong> Dapat menghapus/meminta data melalui layanan pelanggan.</li>
-      <li><strong>Perubahan:</strong> Kebijakan bisa diperbarui sewaktu-waktu.</li>
+      <li><strong>Data yang Dikumpulkan:</strong> Nomor HP, PIN terenkripsi, waktu login, dan perangkat digunakan.</li>
+      <li><strong>Penggunaan Data:</strong> Untuk autentikasi, keamanan, dan personalisasi layanan Galeri Pulsa.</li>
+      <li><strong>Keamanan:</strong> Kami menggunakan sistem enkripsi dan keamanan standar untuk menjaga informasi Anda.</li>
+      <li><strong>Hak Pengguna:</strong> Anda dapat meminta penghapusan atau perubahan data akun dengan menghubungi layanan pelanggan resmi kami.</li>
+      <li><strong>Perubahan Kebijakan:</strong> Kebijakan ini dapat diperbarui sewaktu-waktu dengan atau tanpa pemberitahuan sebelumnya.</li>
     </ul>
-    <p><strong>Dengan login, Anda menyetujui syarat dan kebijakan di atas.</strong></p>
+
+    <p><strong>Dengan login ke Aplikasi Galeri Pulsa, berarti Anda telah membaca dan menyetujui seluruh isi halaman ini.</strong></p>
+
+    <footer>
+      &copy; 2025 Galeri Pulsa. Seluruh hak cipta dilindungi.
+    </footer>
   </div>
-</div>
-
-<script>
-  function openModal() {
-    document.getElementById("popupModal").style.display = "block";
-  }
-
-  function closeModal() {
-    document.getElementById("popupModal").style.display = "none";
-  }
-
-  // Close modal when clicking outside
-  window.onclick = function(event) {
-    const modal = document.getElementById("popupModal");
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  }
-</script>
-
 </body>
 </html>
